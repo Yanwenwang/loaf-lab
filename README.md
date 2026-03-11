@@ -14,12 +14,12 @@ A lightweight AI-powered web app for sourdough bakers who want clearer feedback 
 - **Frontend:** React, Vite, TypeScript, Tailwind CSS
 - **Backend:** Node.js, Express
 
-## Constraints
+## Architecture Decisions
 
-- No database
-- No authentication
-- No persistent user data
-- Keep architecture simple
+- No database — all state is ephemeral and session-based.
+- No authentication — single-user tool, no accounts needed.
+- No persistent user data — keeps the stack simple and deployable anywhere.
+- Stateless backend — Express handles request validation/orchestration without long-term storage.
 
 ## Project Planning Docs
 
