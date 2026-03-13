@@ -8,7 +8,7 @@ import { defineConfig, globalIgnores } from 'eslint/config'
 export default defineConfig([
   globalIgnores(['dist']),
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ['src/**/*.{ts,tsx}'],
     extends: [
       js.configs.recommended,
       tseslint.configs.recommended,
@@ -18,6 +18,20 @@ export default defineConfig([
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
+    },
+    rules: {
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: 'ExportDefaultDeclaration',
+          message: 'Default exports are not allowed. Use named exports instead.',
+        },
+        {
+          selector:
+            'ImportDeclaration[source.value=/^\\.(?!.*\\.(css|svg|png|jpe?g|webp|gif)$)/] > ImportDefaultSpecifier',
+          message: 'Default imports from local code files are not allowed. Use named imports instead.',
+        },
+      ],
     },
   },
 ])
