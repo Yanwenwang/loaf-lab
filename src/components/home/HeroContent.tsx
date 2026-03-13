@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export const HeroContent = () => {
   return (
     <section id="advisor" className="relative flex min-h-[420px] flex-col justify-center px-[48px] py-10 md:px-[64px] md:py-12 lg:min-h-full">
@@ -30,18 +32,18 @@ export const HeroContent = () => {
         </p>
 
         <div className="flex w-full max-w-[360px] flex-col items-stretch gap-4 sm:max-w-none sm:flex-row sm:items-center">
-          <a
-            href="#advisor"
+          <Link
+            to="/advisor"
             className="w-full bg-[#8B5A2B] px-8 py-[14px] text-center text-[14px] font-normal tracking-[0.05em] text-[#F5F0E8] transition hover:bg-[#1C1A17] sm:w-auto"
           >
             Ask the Advisor →
-          </a>
-          <a
-            href="#gallery"
+          </Link>
+          <Link
+            to="/gallery"
             className="w-full border border-[#C4813A] bg-transparent px-7 py-[13px] text-center text-[14px] font-normal tracking-[0.05em] text-[#8B5A2B] transition hover:bg-[#EDE8DF] sm:w-auto"
           >
             See the Gallery
-          </a>
+          </Link>
         </div>
       </div>
     </section>
