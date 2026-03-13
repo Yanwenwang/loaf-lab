@@ -22,10 +22,11 @@ describe('App', () => {
     expect(screen.getByLabelText(/advisor input/i)).toBeInTheDocument()
   })
 
-  it('renders coming-soon pages for calculator, gallery, and about routes', () => {
+  it('renders calculator page and coming-soon pages for gallery and about routes', () => {
     window.history.pushState({}, '', '/calculator')
     const calculatorView = render(<App />)
-    expect(screen.getByRole('heading', { name: /calculator/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /dough calculator/i })).toBeInTheDocument()
+    expect(screen.getByLabelText(/total dough weight/i)).toBeInTheDocument()
     calculatorView.unmount()
 
     window.history.pushState({}, '', '/gallery')
