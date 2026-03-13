@@ -75,9 +75,9 @@ Branch: `feat/m3-calculator-page`
 - Formula outputs update immediately with input changes.
 - Page is responsive and ready for local review.
 
-- [ ] Build calculator layout and controls
-- [ ] Implement client-side formula calculations
-- [ ] Validate basic ranges and outputs
+- [~] Build calculator layout and controls
+- [~] Implement client-side formula calculations
+- [~] Validate basic ranges and outputs
 - [ ] Responsive checks
 - [ ] Local review + revisions
 - [ ] Commit and prepare PR
