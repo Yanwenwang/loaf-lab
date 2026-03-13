@@ -1,35 +1,21 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import loafPhoto from './assets/images/home-page-loaf.jpg'
+import { Header } from './components/layout/Header'
+import { HeroContent } from './components/home/HeroContent'
+import { HeroImage } from './components/home/HeroImage'
 
-function App() {
-  const [count, setCount] = useState(0)
+export const App = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="min-h-screen bg-[#F5F0E8] text-[#1C1A17]" style={{ fontFamily: 'DM Sans, system-ui, sans-serif', fontWeight: 300 }}>
+      <Header mobileMenuOpen={mobileMenuOpen} onToggleMobileMenu={() => setMobileMenuOpen((open) => !open)} />
+
+      <main className="grid min-h-[calc(100vh-72px)] w-full grid-cols-1 lg:grid-cols-2">
+        <HeroContent />
+        <HeroImage loafPhoto={loafPhoto} />
+      </main>
+    </div>
   )
 }
 
-export default App
