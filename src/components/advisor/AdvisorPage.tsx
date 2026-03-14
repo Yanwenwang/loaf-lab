@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
-import './advisor.css'
+import { useEffect, useMemo, useRef, useState } from 'react';
+import './advisor.css';
 
 type Message = {
   role: 'user' | 'assistant'
@@ -13,7 +13,7 @@ const STARTER_PROMPTS = [
   { label: 'Oven spring', question: 'My loaf has no ear and flat oven spring. What went wrong?' },
   { label: 'Bulk fermentation', question: 'How long should bulk fermentation be at 76°F?' },
   { label: 'Scoring & shaping', question: "What's the best scoring pattern for a batard?" },
-] as const
+] as const;
 
 const ADVISOR_REPLY = {
   reply:
@@ -24,50 +24,50 @@ const ADVISOR_REPLY = {
     'Check internal loaf temp before cooling',
   ],
   disclaimer: 'Advisory guidance only; adjust based on your flour, oven, and starter behavior.',
-}
+};
 
 export const AdvisorPage = () => {
-  const [input, setInput] = useState('')
-  const [messages, setMessages] = useState<Message[]>([])
-  const [isTyping, setIsTyping] = useState(false)
-  const messagesEndRef = useRef<HTMLDivElement | null>(null)
-  const replyTimeoutRef = useRef<number | null>(null)
+  const [input, setInput] = useState('');
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const replyTimeoutRef = useRef<number | null>(null);
 
-  const hasConversation = messages.length > 0
+  const hasConversation = messages.length > 0;
 
   const sendQuestion = (question: string) => {
-    const trimmed = question.trim()
+    const trimmed = question.trim();
 
     if (!trimmed || isTyping) {
-      return
+      return;
     }
 
-    setMessages((prev) => [...prev, { role: 'user', content: trimmed }])
-    setInput('')
-    setIsTyping(true)
+    setMessages((prev) => [...prev, { role: 'user', content: trimmed }]);
+    setInput('');
+    setIsTyping(true);
 
     replyTimeoutRef.current = window.setTimeout(() => {
-      setMessages((prev) => [...prev, { role: 'assistant', content: ADVISOR_REPLY.reply }])
-      setIsTyping(false)
-      replyTimeoutRef.current = null
-    }, 350)
-  }
+      setMessages((prev) => [...prev, { role: 'assistant', content: ADVISOR_REPLY.reply }]);
+      setIsTyping(false);
+      replyTimeoutRef.current = null;
+    }, 350);
+  };
 
   useEffect(() => {
     if (messagesEndRef.current && typeof messagesEndRef.current.scrollIntoView === 'function') {
-      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' })
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [messages, isTyping])
+  }, [messages, isTyping]);
 
   useEffect(() => {
     return () => {
       if (replyTimeoutRef.current !== null) {
-        window.clearTimeout(replyTimeoutRef.current)
+        window.clearTimeout(replyTimeoutRef.current);
       }
-    }
-  }, [])
+    };
+  }, []);
 
-  const showQuickActions = useMemo(() => messages.some((message) => message.role === 'assistant'), [messages])
+  const showQuickActions = useMemo(() => messages.some((message) => message.role === 'assistant'), [messages]);
 
   return (
     <main className="grid h-[calc(100vh-73px)] grid-cols-1 lg:grid-cols-2">
@@ -171,7 +171,7 @@ export const AdvisorPage = () => {
             onChange={(event) => setInput(event.target.value)}
             onKeyDown={(event) => {
               if (event.key === 'Enter') {
-                sendQuestion(input)
+                sendQuestion(input);
               }
             }}
           />
@@ -185,5 +185,5 @@ export const AdvisorPage = () => {
         </div>
       </section>
     </main>
-  )
-}
+  );
+};

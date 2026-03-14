@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 export const HeroContent = () => {
   return (
@@ -47,6 +47,6 @@ export const HeroContent = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
