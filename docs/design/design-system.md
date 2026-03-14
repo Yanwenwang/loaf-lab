@@ -544,18 +544,29 @@ Calculator > output-note:              "font-mono text-[10px] text-ash mt-4 pt-3
 # PAGE: GALLERY (/gallery)
 # ============================================================================
 # File: src/pages/Gallery.jsx
-# Layout: dark background, asymmetric grid of bake photos
+# Layout: dark background. Section label + heading/description on top, then full-width asymmetric photo grid below.
 
 Gallery > section:               "bg-char py-20 px-16 min-h-[calc(100vh-73px)]"
-Gallery > grid:                  "grid grid-cols-[2fr_1fr_1fr] grid-rows-[auto_auto] gap-[3px]"
+
+# --- Top: Heading area ---
+Gallery > heading:               "font-display text-[40px] leading-tight text-cream mb-5 tracking-tight"
+Gallery > heading-em:            "text-crumb italic"
+Gallery > description:           "text-[15px] leading-loose text-cream/65 max-w-[520px] mb-12"
+# Section label: use SectionLabel component with text "The Bake Log", variant "dark"
+# Heading text: "Baked with <em>love</em> by Yanwen"
+# Description: "A visual journal of my sourdough journey — flour blends, hydration experiments, and lessons learned from every bake."
+
+# --- Grid ---
+Gallery > grid:                  "grid grid-cols-[2fr_1fr_1fr] grid-rows-[280px_280px] gap-[3px]"
 Gallery > item:                  "bg-[#2A2620] relative overflow-hidden group"
 Gallery > item-featured:         "bg-[#2A2620] relative overflow-hidden group row-span-2"
-Gallery > thumb:                 "w-full h-full min-h-[180px] flex items-center justify-center text-[40px] relative"
-Gallery > thumb-featured:        "w-full h-full min-h-[400px] flex items-center justify-center text-[72px] relative"
+Gallery > thumb:                 "w-full h-full flex items-center justify-center text-[40px] relative"
+Gallery > thumb-featured:        "w-full h-full flex items-center justify-center text-[72px] relative"
 Gallery > overlay:               "gallery-overlay-gradient absolute bottom-0 left-0 right-0 p-5 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
 Gallery > overlay-title:         "font-display text-base text-cream mb-1"
 Gallery > overlay-meta:          "font-mono text-[11px] text-crumb"
 # Grid layout: first item spans 2 rows (featured), remaining items fill 2x2 on the right
+# Grid rows are fixed at 280px each, making the featured item 560px + 3px gap = 563px tall
 # Each item has a hover overlay with title + metadata
 # Thumb backgrounds use linear-gradient placeholders until real photos are added
 # The overlay uses custom CSS class "gallery-overlay-gradient"

@@ -95,9 +95,9 @@ Branch: `feat/m4-gallery-page`
 - Metadata is visible and legible.
 - Structure supports easy image swap later.
 
-- [ ] Build gallery grid with placeholder assets
-- [ ] Add metadata cards (hydration/flour/date/notes)
-- [ ] Ensure easy swap for real photos later
+- [~] Build gallery grid with placeholder assets
+- [~] Add metadata cards (hydration/flour/date/notes)
+- [~] Ensure easy swap for real photos later
 - [ ] Responsive checks
 - [ ] Local review + revisions
 - [ ] Commit and prepare PR
