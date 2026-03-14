@@ -38,7 +38,7 @@ describe('App', () => {
     window.history.pushState({}, '', '/about');
     render(<App />);
     expect(screen.getByRole('heading', { name: /hi, i'm yanwen/i })).toBeInTheDocument();
-    expect(screen.getByText(/quality control in progress/i)).toBeInTheDocument();
+    expect(screen.getByText(/official loaf inspector/i)).toBeInTheDocument();
   });
 
   it('redirects unknown routes to home', () => {

@@ -11,7 +11,7 @@ const ABOUT_PARAGRAPHS = [
 export const AboutPage = () => {
   return (
     <main className="grid min-h-[calc(100vh-73px)] grid-cols-1 lg:grid-cols-2">
-      <section className="hero-left-border relative flex flex-col justify-center bg-[#F5F0E8] px-6 py-12 md:px-12 md:py-20 lg:px-16">
+      <section className="relative flex flex-col justify-center bg-[#F5F0E8] px-6 py-12 md:px-12 md:py-20 lg:px-16">
         <h1 className="mb-8 font-display text-[40px] leading-tight tracking-tight text-[#1C1A17]">
           Hi, I&apos;m <em className="italic text-[#C4813A]">Yanwen.</em>
         </h1>
