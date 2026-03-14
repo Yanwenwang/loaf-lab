@@ -14,5 +14,5 @@ export const ComingSoonPage = ({ title }: ComingSoonPageProps) => {
         </h1>
       </div>
     </main>
-  )
-}
+  );
+};

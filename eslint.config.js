@@ -20,6 +20,7 @@ export default defineConfig([
       globals: globals.browser,
     },
     rules: {
+      semi: ['error', 'always'],
       'no-restricted-syntax': [
         'error',
         {

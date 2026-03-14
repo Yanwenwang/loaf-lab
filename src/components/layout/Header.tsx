@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom'
-import { NAV_ITEMS } from '../../constants/navigation'
+import { NavLink } from 'react-router-dom';
+import { NAV_ITEMS } from '../../constants/navigation';
 
 type HeaderProps = {
   mobileMenuOpen: boolean
@@ -12,7 +12,7 @@ const NAV_ROUTES: Record<string, string> = {
   Calculator: '/calculator',
   Gallery: '/gallery',
   About: '/about',
-}
+};
 
 export const Header = ({ mobileMenuOpen, onToggleMobileMenu }: HeaderProps) => {
   return (
@@ -71,5 +71,5 @@ export const Header = ({ mobileMenuOpen, onToggleMobileMenu }: HeaderProps) => {
         </nav>
       )}
     </header>
-  )
-}
+  );
+};

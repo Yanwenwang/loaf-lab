@@ -1,15 +1,15 @@
-import { useState } from 'react'
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
-import loafPhoto from './assets/images/home-page-loaf.jpg'
-import { AdvisorPage } from './components/advisor/AdvisorPage'
-import { CalculatorPage } from './components/calculator/CalculatorPage'
-import { HeroContent } from './components/home/HeroContent'
-import { HeroImage } from './components/home/HeroImage'
-import { ComingSoonPage } from './components/layout/ComingSoonPage'
-import { Header } from './components/layout/Header'
+import { useState } from 'react';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import loafPhoto from './assets/images/home-page-loaf.jpg';
+import { AdvisorPage } from './components/advisor/AdvisorPage';
+import { CalculatorPage } from './components/calculator/CalculatorPage';
+import { HeroContent } from './components/home/HeroContent';
+import { HeroImage } from './components/home/HeroImage';
+import { ComingSoonPage } from './components/layout/ComingSoonPage';
+import { Header } from './components/layout/Header';
 
 export const App = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <BrowserRouter>
@@ -34,5 +34,5 @@ export const App = () => {
         </Routes>
       </div>
     </BrowserRouter>
-  )
-}
+  );
+};
