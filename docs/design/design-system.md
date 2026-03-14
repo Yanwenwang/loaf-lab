@@ -83,6 +83,18 @@ export default {
   box-sizing: border-box;
 }
 
+/* ── Global body style ── */
+/* All text inherits font-weight: 300 from body.
+   Do NOT add font-light to individual elements unless overriding.
+   Playfair Display headings naturally render at 400 (their default).
+   DM Mono labels naturally render at their loaded weights (300/400/500). */
+body {
+  background: #F5F0E8;
+  color: #1C1A17;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+}
+
 /* ── Eyebrow: left dash (used on Landing hero) ── */
 .eyebrow::before {
   content: "";
@@ -455,35 +467,78 @@ Advisor > input-button:         "py-4 px-[22px] bg-crust-dark text-cream border-
 # PAGE: CALCULATOR (/calculator)
 # ============================================================================
 # File: src/pages/Calculator.jsx
-# Layout: two-column — description left, interactive widget right
+# Layout: section label on top, then two-column grid — description left, interactive widget right
 
 Calculator > section:            "py-20 px-16 bg-cream min-h-[calc(100vh-73px)]"
+# Section label: use SectionLabel component with text "Hydration Calculator", variant "light"
 Calculator > grid:               "grid grid-cols-2 gap-12 items-start"
 
 # --- Left: Description ---
-Calculator > desc:               "font-display text-[28px] leading-snug text-char pr-5"
+# These values must match the original mockup CSS exactly.
+# The original mockup does NOT set font-weight on the heading or body text.
+# Both inherit font-weight: 300 from the body. Do NOT add font-normal or font-light.
+# Playfair Display at 300 still looks heavier than DM Sans at 300 due to serif contrast.
+Calculator > desc:               "font-display text-[28px] leading-[1.4] text-char pr-5"
 Calculator > desc-em:            "italic text-crust"
-Calculator > desc-body:          "font-sans text-sm text-ash mt-4 leading-relaxed not-italic"
+Calculator > desc-body:          "font-sans text-[14px] leading-[1.7] text-ash mt-4 not-italic"
 # Desc text: "Precise ratios for <em>every flour,</em> every bake."
 # Body text: "Fresh milled whole wheat behaves differently than bread flour. This calculator accounts for flour type, absorption rates, and starter hydration — so your math is always right."
+# IMPORTANT: Use exact pixel and line-height values, not Tailwind named sizes.
+# text-[28px] not text-2xl. text-[14px] not text-sm. leading-[1.4] not leading-snug.
 
 # --- Right: Widget ---
 Calculator > widget:             "bg-warm-white border border-crust/20 p-10"
 Calculator > widget-title:       "font-display text-[26px] mb-7 text-char"
-Calculator > row:                "flex justify-between items-center py-3.5 border-b border-crust/[0.12]"
+Calculator > row:                "flex justify-between items-center py-3.5"
 Calculator > row-label:          "text-[13px] text-ash tracking-tight"
-Calculator > row-value:          "font-mono text-base text-crust-dark font-medium"
+Calculator > row-value:          "flex items-baseline"
+Calculator > row-value-number:   "font-sans text-[18px] font-light text-char tracking-tight"
+Calculator > row-value-unit:     "font-sans text-[11px] font-light text-ash ml-1"
 Calculator > slider:             "calc-slider"
-Calculator > output:             "mt-6 p-5 bg-char text-cream"
-Calculator > output-label:       "font-mono text-[10px] tracking-[0.2em] uppercase text-crumb mb-2"
-Calculator > output-value:       "font-display text-[36px] text-crumb"
-Calculator > output-small-value: "font-display text-[26px] text-crumb"
-Calculator > output-pair-grid:   "grid grid-cols-2 gap-[2px] mt-[2px]"
-Calculator > output-pair-cell:   "p-3.5 px-5 bg-char"
 # Widget title: "Dough Calculator"
 # Slider rows: "Total dough weight" (400–2000g), "Target hydration" (60–95%), "Fresh milled %" (0–100%)
-# Output boxes: Flour (large), Water + Salt (side by side, smaller)
+# Slider row values use the same DM Sans light style as output numbers, with separated units:
+#   <div className={row-value}>
+#     <span className={row-value-number}>900</span>
+#     <span className={row-value-unit}>g</span>
+#   </div>
+# This keeps the number typography consistent across sliders and output.
 # Sliders use custom CSS class "calc-slider"
+
+# --- Right: Output (below sliders, still inside the widget) ---
+# Style: minimal with divider lines. No dark boxes.
+# A subtle thin divider separates inputs from outputs (NOT bold, NOT crust-colored).
+# Flour is large and prominent, Water/Salt are side by side below a thin divider.
+# An effective hydration note sits at the bottom.
+# Numbers use DM Sans light (300) in char. Units ("g", "%") are separate spans
+# in DM Mono light (300) in ash, with a small left margin for breathing room.
+# IMPORTANT: number and unit MUST be inline on the same line (use inline or flex row).
+Calculator > output-wrapper:           "mt-6 pt-6 border-t border-crust/20"
+Calculator > output-main:              "pb-5"
+Calculator > output-label:             "font-mono text-[10px] tracking-[0.2em] uppercase text-crust mb-1"
+Calculator > output-value:             "flex items-baseline"
+Calculator > output-value-number:      "font-sans text-[44px] font-light text-char tracking-tight"
+Calculator > output-value-unit:        "font-mono text-sm font-light text-ash ml-1.5"
+Calculator > output-pair:              "grid grid-cols-2 border-t border-crust/20"
+Calculator > output-pair-cell-left:    "py-4 pr-5 border-r border-crust/20"
+Calculator > output-pair-cell-right:   "py-4 pl-5"
+Calculator > output-pair-value:        "flex items-baseline"
+Calculator > output-pair-number:       "font-sans text-[28px] font-light text-char tracking-tight"
+Calculator > output-pair-unit:         "font-mono text-xs font-light text-ash ml-1"
+Calculator > output-note:              "font-mono text-[10px] text-ash mt-4 pt-3 border-t border-crust/10 opacity-70"
+# Structure for each output value:
+#   <div className={output-value}>        ← flex items-baseline container
+#     <span className={output-value-number}>506</span>
+#     <span className={output-value-unit}>g</span>
+#   </div>
+# This ensures number and unit sit on the same baseline, never stacking vertically.
+#
+# Flour label: "FLOUR", number: "506", unit: "g"
+# Water label: "WATER", number: "395", unit: "g"  (left cell)
+# Salt label: "SALT", number: "10", unit: "g"     (right cell)
+# Note text: "Effective hydration: 79.8% (+1.8% absorption adjustment)"
+# IMPORTANT: The output-wrapper top border is thin (1px) and muted (crust/20),
+# NOT the same weight or color as the sliders. It should feel like a quiet separator.
 
 # ============================================================================
 # PAGE: GALLERY (/gallery)
