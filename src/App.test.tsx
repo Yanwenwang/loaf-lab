@@ -22,7 +22,7 @@ describe('App', () => {
     expect(screen.getByLabelText(/advisor input/i)).toBeInTheDocument();
   });
 
-  it('renders calculator page and coming-soon pages for gallery and about routes', () => {
+  it('renders calculator and gallery pages, plus coming-soon about route', () => {
     window.history.pushState({}, '', '/calculator');
     const calculatorView = render(<App />);
     expect(screen.getByRole('heading', { name: /dough calculator/i })).toBeInTheDocument();
@@ -31,7 +31,8 @@ describe('App', () => {
 
     window.history.pushState({}, '', '/gallery');
     const galleryView = render(<App />);
-    expect(screen.getByRole('heading', { name: /gallery/i })).toBeInTheDocument();
+    expect(screen.getByText(/bake log/i)).toBeInTheDocument();
+    expect(screen.getByRole('article', { name: /hard red wheat, 75% hydration/i })).toBeInTheDocument();
     galleryView.unmount();
 
     window.history.pushState({}, '', '/about');

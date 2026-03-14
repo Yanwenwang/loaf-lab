@@ -30,3 +30,15 @@ body {
 #root {
   min-height: 100vh;
 }
+
+.section-label-dark::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(232, 201, 138, 0.2);
+  max-width: 200px;
+}
+
+.gallery-overlay-gradient {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+}

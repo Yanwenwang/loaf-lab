@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import loafPhoto from './assets/images/home-page-loaf.jpg';
 import { AdvisorPage } from './components/advisor/AdvisorPage';
 import { CalculatorPage } from './components/calculator/CalculatorPage';
+import { GalleryPage } from './components/gallery/GalleryPage';
 import { HeroContent } from './components/home/HeroContent';
 import { HeroImage } from './components/home/HeroImage';
 import { ComingSoonPage } from './components/layout/ComingSoonPage';
@@ -28,7 +29,7 @@ export const App = () => {
           />
           <Route path="/advisor" element={<AdvisorPage />} />
           <Route path="/calculator" element={<CalculatorPage />} />
-          <Route path="/gallery" element={<ComingSoonPage title="Gallery" />} />
+          <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/about" element={<ComingSoonPage title="About" />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
