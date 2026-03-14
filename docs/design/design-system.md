@@ -17,7 +17,7 @@
 # /advisor       → AI Sourdough Advisor chat interface
 # /calculator    → Hydration Calculator tool
 # /gallery       → Bake Log photo gallery
-# /about         → About page (not yet designed)
+# /about         → About page (personal intro + cat photo)
 
 # ============================================================================
 # TAILWIND CONFIG — tailwind.config.js
@@ -321,7 +321,7 @@ Footer > wrapper:       "bg-char border-t border-white/5 py-8 px-16 flex justify
 Footer > logo:          "font-display text-[22px] italic text-crumb tracking-tight"
 Footer > logo-bold:     "not-italic font-bold text-crumb"
 Footer > text:          "font-mono text-[11px] text-cream/30 tracking-wide"
-# Footer text: "Built with React · Claude API · RAG · Made by a baker who codes"
+# Footer text: "Built with React · TypeScript · Node.js · and a lot of sourdough"
 
 # ----------------------------------------------------------------------------
 # SectionLabel — reusable label component
@@ -576,6 +576,40 @@ Gallery > overlay-meta:          "font-mono text-[11px] text-crumb"
 #   Item 3: "100% Whole Wheat" / "Dec 2024 · Dense crumb"
 #   Item 4: "Hard White + Spelt" / "Nov 2024 · 80% hydration"
 #   Item 5: "Discard Focaccia" / "Nov 2024 · Olive & rosemary"
+
+# ============================================================================
+# PAGE: ABOUT (/about)
+# ============================================================================
+# File: src/pages/About.jsx
+# Layout: two-column split — text left, photo right. Same pattern as Advisor page.
+
+About > wrapper:                 "grid grid-cols-2 min-h-[calc(100vh-73px)]"
+
+# --- Left: Text ---
+About > text-panel:              "py-20 px-16 flex flex-col justify-center relative"
+# No vertical border line on the text panel.
+About > greeting:                "font-display text-[40px] leading-tight text-char mb-8 tracking-tight"
+About > greeting-em:             "italic text-crust"
+About > body-paragraph:          "text-[15px] leading-[1.9] text-ash mb-5 max-w-[460px]"
+About > signoff:                 "text-[14px] text-ash opacity-70 mt-8 pt-6 border-t border-crust/15"
+# No section label on this page — the greeting "Hi, I'm Yanwen." serves as the header.
+# Greeting: "Hi, I'm <em>Yanwen.</em>"
+# Body paragraphs (each is a separate <p> element):
+#   1. "I'm a software engineer who debugs bread."
+#   2. "What started as a weekend sourdough hobby slowly turned into a mini science project — tracking dough temperature, hydration levels, fermentation timing, and crumb structure. Trying to figure out why some loaves turned out amazing and others... not so much."
+#   3. "At some point I realized: small variables change everything, the best way to learn is through iteration, and I was basically doing engineering with flour and water."
+#   4. "So I built Loaf Lab."
+#   5. "When I'm not coding, I'm usually in the kitchen milling wheat berries, feeding my starter, or sharing loaves with neighbors and friends."
+# Signoff: "Thanks for stopping by. Loaf Lab is a small window into how I like to think, build, and learn. ♡"
+
+# --- Right: Photo ---
+About > photo-panel:             "relative overflow-hidden bg-char"
+About > photo-image:             "w-full h-full object-cover object-[center_30%]"
+About > photo-caption:           "absolute bottom-0 left-0 right-0 px-8 py-6"
+About > photo-caption-text:      "font-mono text-[11px] text-crumb tracking-wide opacity-80"
+# Photo: cat inspecting a sourdough loaf (store as /public/images/about-cat-sourdough.jpg)
+# Caption: "Official loaf inspector."
+# The caption sits over a gradient overlay (reuse custom CSS: gallery-overlay-gradient)
 
 # ============================================================================
 # RECURRING PATTERNS SUMMARY
