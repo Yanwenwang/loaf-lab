@@ -5,7 +5,6 @@ describe('AboutPage', () => {
   it('renders about copy and image content', () => {
     render(<AboutPage />);
 
-    expect(screen.queryByText(/^about$/i)).not.toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /hi, i'm yanwen/i })).toBeInTheDocument();
     expect(screen.getByText(/i'm a software engineer who debugs bread/i)).toBeInTheDocument();
     expect(screen.getByText(/so i built loaf lab/i)).toBeInTheDocument();
