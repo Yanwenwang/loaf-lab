@@ -7,6 +7,7 @@ import { CalculatorPage } from './components/calculator/CalculatorPage';
 import { GalleryPage } from './components/gallery/GalleryPage';
 import { HeroContent } from './components/home/HeroContent';
 import { HeroImage } from './components/home/HeroImage';
+import { Footer } from './components/layout/Footer';
 import { Header } from './components/layout/Header';
 
 export const App = () => {
@@ -33,6 +34,8 @@ export const App = () => {
           <Route path="/about" element={<AboutPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+
+        <Footer />
       </div>
     </BrowserRouter>
   );
