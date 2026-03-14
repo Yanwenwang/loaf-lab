@@ -9,6 +9,7 @@ describe('App', () => {
     expect(screen.getByRole('banner')).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /bake with/i })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: /fresh baked sourdough loaf/i })).toBeInTheDocument();
+    expect(screen.getByText(/built with react · typescript · node.js · and a lot of sourdough/i)).toBeInTheDocument();
   });
 
   it('shows Advisor page after clicking nav link', () => {
