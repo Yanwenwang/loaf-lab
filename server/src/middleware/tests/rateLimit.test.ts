@@ -5,12 +5,12 @@ import { rateLimit } from '../rateLimit.js';
 
 describe('rateLimit middleware', () => {
   it('calls next for requests under the limit', () => {
-    const req = { ip: `test-under-${Date.now()}` } as never;
+    const req = { ip: `test-under-${Date.now()}` } as any;
     const res = {
       status: vi.fn().mockReturnThis(),
       json: vi.fn(),
       setHeader: vi.fn(),
-    } as never;
+    } as any;
     const next = vi.fn();
 
     rateLimit(req, res, next);
@@ -20,12 +20,12 @@ describe('rateLimit middleware', () => {
   });
 
   it('returns 429 when requests exceed the limit', () => {
-    const req = { ip: `test-over-${Date.now()}` } as never;
+    const req = { ip: `test-over-${Date.now()}` } as any;
     const res = {
       status: vi.fn().mockReturnThis(),
       json: vi.fn(),
       setHeader: vi.fn(),
-    } as never;
+    } as any;
     const next = vi.fn();
 
     for (let i = 0; i < 31; i += 1) {
