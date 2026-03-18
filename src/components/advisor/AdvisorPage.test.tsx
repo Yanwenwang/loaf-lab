@@ -11,15 +11,15 @@ describe('AdvisorPage', () => {
     expect(screen.getByLabelText(/advisor input/i)).toBeInTheDocument();
   });
 
-  it('shows typing indicator then assistant reply after selecting a starter prompt', async () => {
+  it('shows typing indicator then assistant fallback reply after selecting a starter prompt', async () => {
     render(<AdvisorPage />);
 
     fireEvent.click(screen.getByRole('button', { name: /gummy crumb/i }));
 
-    expect(screen.getByLabelText(/advisor typing/i)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '…' })).toBeDisabled();
     expect(screen.getByText(/my crumb is gummy near the base/i)).toBeInTheDocument();
     expect(await screen.findByText(/loaf lab advisor/i)).toBeInTheDocument();
-    expect(await screen.findByText(/quick actions/i)).toBeInTheDocument();
+    expect(await screen.findByText(/sorry — i hit an api error\. please try again\./i)).toBeInTheDocument();
   });
 
   it('cleans up pending timeout on unmount', () => {
