@@ -3,18 +3,10 @@ import express from 'express';
 import { createChatRouter } from './routes/chat.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import { rateLimit } from './middleware/rateLimit.js';
-
-type ChatService = {
-  streamChat: (args: {
-    message: string
-    history: Array<{ role: 'user' | 'assistant'; content: string }>
-    signal: AbortSignal
-    onToken: (token: string) => void
-  }) => Promise<void>
-};
+import type { LLMService } from './types/llm.js';
 
 type CreateAppInput = {
-  chatService: ChatService
+  chatService: LLMService
   trustProxy?: boolean
 };
 
