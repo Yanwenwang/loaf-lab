@@ -24,7 +24,7 @@ export const useAdvisorChat = () => {
     try {
       await streamChat({
         message: trimmed,
-        history: nextMessages,
+        history: messages,
         onToken: (token) => {
           setMessages((prev) =>
             prev.map((message, index) =>
