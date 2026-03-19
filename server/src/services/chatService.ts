@@ -1,17 +1,6 @@
 import OpenAI from 'openai';
 import { SYSTEM_PROMPT } from '../config/prompts.js';
-
-type ChatMessage = {
-  role: 'user' | 'assistant'
-  content: string
-};
-
-type StreamChatInput = {
-  message: string
-  history: ChatMessage[]
-  onToken: (token: string) => void
-  signal: AbortSignal
-};
+import type { ChatMessage, LLMService, StreamChatInput } from '../types/llm.js';
 
 const MAX_HISTORY_MESSAGES = 12;
 
@@ -32,7 +21,7 @@ const normalizeHistory = (history: unknown): ChatMessage[] => {
     .slice(-MAX_HISTORY_MESSAGES);
 };
 
-export const createChatService = ({ apiKey, model }: { apiKey: string; model: string }) => {
+export const createChatService = ({ apiKey, model }: { apiKey: string; model: string }): LLMService => {
   const openai = new OpenAI({ apiKey });
 
   const streamChat = async ({ message, history, onToken, signal }: StreamChatInput): Promise<void> => {

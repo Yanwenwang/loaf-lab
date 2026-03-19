@@ -1,20 +1,7 @@
 import Joi from 'joi';
 import { Router } from 'express';
 import { env } from '../config/env.js';
-
-type ChatMessage = {
-  role: 'user' | 'assistant'
-  content: string
-};
-
-type ChatService = {
-  streamChat: (args: {
-    message: string
-    history: ChatMessage[]
-    signal: AbortSignal
-    onToken: (token: string) => void
-  }) => Promise<void>
-};
+import type { LLMService } from '../types/llm.js';
 
 const MAX_TEXT_LENGTH = 4000;
 const MAX_HISTORY_MESSAGES = 12;
@@ -32,7 +19,7 @@ const chatRequestSchema = Joi.object({
     .default([]),
 });
 
-export const createChatRouter = ({ chatService }: { chatService: ChatService }) => {
+export const createChatRouter = ({ chatService }: { chatService: LLMService }) => {
   const router = Router();
 
   router.post('/chat', async (req, res) => {
