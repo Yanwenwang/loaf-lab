@@ -4,10 +4,20 @@ type RequestOptions = {
   headers?: Record<string, string>
 };
 
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL as string | undefined)?.replace(/\/$/, '') ?? '';
+
+const withApiBase = (url: string) => {
+  if (!API_BASE_URL || /^https?:\/\//.test(url)) {
+    return url;
+  }
+
+  return `${API_BASE_URL}${url.startsWith('/') ? url : `/${url}`}`;
+};
+
 export const request = async (url: string, options: RequestOptions = {}) => {
   const { method = 'GET', body, headers = {} } = options;
 
-  const response = await fetch(url, {
+  const response = await fetch(withApiBase(url), {
     method,
     headers: {
       ...(body !== undefined ? { 'Content-Type': 'application/json' } : {}),
