@@ -7,7 +7,7 @@ type RequestOptions = {
 const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL as string | undefined)?.replace(/\/$/, '') ?? '';
 
 const withApiBase = (url: string) => {
-  if (!API_BASE_URL || /^https?:\/\//.test(url)) {
+  if (!API_BASE_URL || /^https?:\/\//.test(url) || /^\/\//.test(url)) {
     return url;
   }
 
@@ -46,5 +46,9 @@ export const request = async (url: string, options: RequestOptions = {}) => {
 
 export const httpClient = {
   request,
+  get: (url: string, headers?: Record<string, string>) => request(url, { method: 'GET', headers }),
   post: (url: string, body?: unknown, headers?: Record<string, string>) => request(url, { method: 'POST', body, headers }),
+  put: (url: string, body?: unknown, headers?: Record<string, string>) => request(url, { method: 'PUT', body, headers }),
+  patch: (url: string, body?: unknown, headers?: Record<string, string>) => request(url, { method: 'PATCH', body, headers }),
+  delete: (url: string, body?: unknown, headers?: Record<string, string>) => request(url, { method: 'DELETE', body, headers }),
 };
