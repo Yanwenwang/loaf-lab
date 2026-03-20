@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 import { useAdvisorChat } from '../../hooks/useAdvisorChat';
 import './advisor.css';
 
@@ -82,7 +83,13 @@ export const AdvisorPage = () => {
                     Loaf Lab Advisor
                   </p>
                 )}
-                {message.content || '…'}
+                {message.role === 'assistant' ? (
+                  <div className="advisor-markdown">
+                    <ReactMarkdown>{message.content || '…'}</ReactMarkdown>
+                  </div>
+                ) : (
+                  message.content || '…'
+                )}
               </div>
             ))}
 
