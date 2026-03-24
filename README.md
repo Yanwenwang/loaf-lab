@@ -2,6 +2,10 @@
 
 A lightweight AI-powered web app for sourdough bakers who want clearer feedback and practical tools to improve each bake.
 
+## Live Demo
+
+https://loaf-lab.vercel.app/
+
 ## Core Features
 
 1. **AI Advisor** — chat-style guidance for fermentation, flour choices, and troubleshooting.
