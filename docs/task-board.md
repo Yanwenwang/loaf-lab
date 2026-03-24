@@ -34,13 +34,13 @@ Branch: `feat/m1-home-page`
 - Layout feels full-screen and responsive on mobile/tablet/desktop.
 - Page is ready for local review before commit.
 
-- [ ] Set up Tailwind (`tailwindcss` + `@tailwindcss/vite`)
-- [ ] Configure global style foundation for Home page
-- [ ] Build navbar + hero layout
-- [ ] Match approved visual direction (full-screen landing)
-- [ ] Responsive checks (mobile/tablet/desktop)
-- [ ] Local review + revisions
-- [ ] Commit and prepare PR
+- [x] Set up Tailwind (`tailwindcss` + `@tailwindcss/vite`)
+- [x] Configure global style foundation for Home page
+- [x] Build navbar + hero layout
+- [x] Match approved visual direction (full-screen landing)
+- [x] Responsive checks (mobile/tablet/desktop)
+- [x] Local review + revisions
+- [x] Commit and prepare PR
 
 ---
 
@@ -55,12 +55,12 @@ Branch: `feat/m2-advisor-page`
 - Uses contract-compatible mock data shape.
 - Shared UI parts extracted only when repeated.
 
-- [ ] Build “What it does” section
-- [ ] Build advisor interaction panel (chat-style UI)
-- [ ] Render mock advisor data with contract-compatible shape
-- [ ] Reuse/extract shared components when repeated
-- [ ] Local review + revisions
-- [ ] Commit and prepare PR
+- [x] Build “What it does” section
+- [x] Build advisor interaction panel (chat-style UI)
+- [x] Render mock advisor data with contract-compatible shape
+- [x] Reuse/extract shared components when repeated
+- [x] Local review + revisions
+- [x] Commit and prepare PR
 
 ---
 
@@ -75,12 +75,12 @@ Branch: `feat/m3-calculator-page`
 - Formula outputs update immediately with input changes.
 - Page is responsive and ready for local review.
 
-- [~] Build calculator layout and controls
-- [~] Implement client-side formula calculations
-- [~] Validate basic ranges and outputs
-- [ ] Responsive checks
-- [ ] Local review + revisions
-- [ ] Commit and prepare PR
+- [x] Build calculator layout and controls
+- [x] Implement client-side formula calculations
+- [x] Validate basic ranges and outputs
+- [x] Responsive checks
+- [x] Local review + revisions
+- [x] Commit and prepare PR
 
 ---
 
@@ -95,12 +95,12 @@ Branch: `feat/m4-gallery-page`
 - Metadata is visible and legible.
 - Structure supports easy image swap later.
 
-- [~] Build gallery grid with placeholder assets
-- [~] Add metadata cards (hydration/flour/date/notes)
-- [~] Ensure easy swap for real photos later
-- [ ] Responsive checks
-- [ ] Local review + revisions
-- [ ] Commit and prepare PR
+- [x] Build gallery grid with placeholder assets
+- [x] Add metadata cards (hydration/flour/date/notes)
+- [x] Ensure easy swap for real photos later
+- [x] Responsive checks
+- [x] Local review + revisions
+- [x] Commit and prepare PR
 
 ---
 
@@ -108,45 +108,38 @@ Branch: `feat/m4-gallery-page`
 Branch: `feat/m5-api-backend`
 
 **Goal**
-- Provide a minimal Express backend with stable contracts for advisor/analyzer flows.
+- Provide a minimal Express backend with a stable contract for the advisor chat flow.
 
 **Acceptance Criteria**
-- All three API routes are implemented and callable.
+- Advisor chat API route is implemented and callable (`/api/chat`).
 - Validation and consistent error responses are in place.
 - Local run instructions are documented.
 
-- [ ] Scaffold Node + Express backend
-- [ ] Add env setup (`.env.example`)
-- [ ] Implement `POST /api/crumb-feedback`
-- [ ] Implement `POST /api/formula-adjust`
-- [ ] Implement `POST /api/advisor` (stub contract)
-- [ ] Add validation and consistent error responses
-- [ ] Add local run scripts/docs
-- [ ] Commit and prepare PR
+- [x] Scaffold Node + Express backend
+- [x] Add env setup (`.env.example`)
+- [x] Implement `POST /api/chat` (streaming advisor contract)
+- [x] Add validation and consistent error responses
+- [x] Add local run scripts/docs
+- [x] Commit and prepare PR
 
 ---
 
-## Milestone 6 — UI/API Integration
+## Milestone 6 — UI/API Integration (Advisor)
 Branch: `feat/m6-ui-api-integration`
 
 **Goal**
-- Connect frontend flows to backend endpoints with robust state handling.
+- Connect the advisor frontend flow to the backend chat endpoint with robust state handling.
 
 **Acceptance Criteria**
-- Crumb-feedback and formula-adjust flows work end-to-end.
-- Loading/success/empty/error states are all visible and tested.
-- Error payloads follow the agreed format.
+- Advisor chat flow works end-to-end with `/api/chat`.
+- Loading/success/empty/error states are visible and tested.
+- Contract behavior is consistent between frontend and backend.
 
-- [ ] Connect crumb-feedback flow to `/api/crumb-feedback`
-- [ ] Connect formula-adjust flow to `/api/formula-adjust`
-- [ ] Add loading, success, empty, and error states
-- [ ] Use consistent API error format:
-  - [ ] `error.code`
-  - [ ] `error.message`
-  - [ ] optional `error.fieldErrors`
-- [ ] Confirm contract alignment end-to-end
-- [ ] Local review + revisions
-- [ ] Commit and prepare PR
+- [x] Connect advisor flow to `/api/chat`
+- [x] Add loading, success, empty, and error states (advisor flow)
+- [x] Confirm contract alignment end-to-end (advisor flow)
+- [x] Local review + revisions
+- [x] Commit and prepare PR
 
 ---
 
@@ -162,9 +155,25 @@ Branch: `chore/m7-polish-deploy`
 - README and demo script are up to date.
 
 - [ ] Final responsive polish
-- [ ] Accessibility pass
-- [ ] README final update
-- [ ] Frontend deploy
-- [ ] Backend deploy
-- [ ] Demo script for product walkthrough
+- [x] Accessibility pass (Lighthouse: 95)
+- [x] README final update
+- [x] Frontend deploy (live: https://loaf-lab.vercel.app/)
+- [x] Backend deploy (Render)
+- [x] Demo script for product walkthrough (`docs/demo-script.md`)
 - [ ] Final release merge
+
+---
+
+## Future Features (Deferred)
+
+Moved out of current milestones due to timeline constraints.
+
+- [ ] Implement `POST /api/crumb-feedback`
+- [ ] Implement `POST /api/formula-adjust`
+- [ ] Connect crumb-feedback flow to `/api/crumb-feedback`
+- [ ] Connect formula-adjust flow to `/api/formula-adjust`
+- [ ] Standardize API error format across new endpoints:
+  - [ ] `error.code`
+  - [ ] `error.message`
+  - [ ] optional `error.fieldErrors`
+- [ ] Calculator UX enhancement: add numeric input boxes next to slider controls so users can type values directly (without dragging)
