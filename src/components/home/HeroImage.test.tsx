@@ -3,7 +3,7 @@ import { HeroImage } from './HeroImage';
 
 describe('HeroImage', () => {
   it('renders image with expected alt text', () => {
-    render(<HeroImage loafPhoto="/images/loaf.jpg" />);
+    render(<HeroImage />);
 
     expect(screen.getByAltText('Fresh baked sourdough loaf')).toBeInTheDocument();
   });
