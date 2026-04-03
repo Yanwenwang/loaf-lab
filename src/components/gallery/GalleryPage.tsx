@@ -1,13 +1,21 @@
 import photo01 from '../../assets/images/gallery_img_01.jpg';
+import photo01WebP from '../../assets/images/gallery_img_01.jpg?w=480;960;1200&format=webp&as=srcset';
 import photo02 from '../../assets/images/gallery_img_02.jpg';
+import photo02WebP from '../../assets/images/gallery_img_02.jpg?w=480;960&format=webp&as=srcset';
 import photo03 from '../../assets/images/gallery_img_03.jpg';
+import photo03WebP from '../../assets/images/gallery_img_03.jpg?w=480;960&format=webp&as=srcset';
 import photo04 from '../../assets/images/gallery_img_04.jpg';
+import photo04WebP from '../../assets/images/gallery_img_04.jpg?w=480;960&format=webp&as=srcset';
 import photo05 from '../../assets/images/gallery_img_05.jpg';
+import photo05WebP from '../../assets/images/gallery_img_05.jpg?w=480;960&format=webp&as=srcset';
 
 type GalleryItem = {
   title: string;
   meta: string;
   imageSrc: string;
+  imageSrcSetWebP: string;
+  width: number;
+  height: number;
   featured?: boolean;
 };
 
@@ -16,27 +24,42 @@ const GALLERY_ITEMS: GalleryItem[] = [
     title: 'Hard Red Wheat, 75% Hydration',
     meta: 'Feb 2026 · Open crumb · 18hr cold retard',
     imageSrc: photo01,
+    imageSrcSetWebP: photo01WebP,
+    width: 4032,
+    height: 3024,
     featured: true,
   },
   {
     title: 'Einkorn Blend',
     meta: 'Jan 2026 · 65% hydration',
     imageSrc: photo02,
+    imageSrcSetWebP: photo02WebP,
+    width: 3108,
+    height: 3885,
   },
   {
     title: '100% Whole Wheat',
     meta: 'Dec 2025 · 75% hydration',
     imageSrc: photo03,
+    imageSrcSetWebP: photo03WebP,
+    width: 3943,
+    height: 5257,
   },
   {
     title: 'Hard White + Spelt',
     meta: 'Nov 2025 · 80% hydration',
     imageSrc: photo04,
+    imageSrcSetWebP: photo04WebP,
+    width: 2261,
+    height: 2826,
   },
   {
     title: '40% whole wheat',
     meta: 'Nov 2025 · 80% hydration',
     imageSrc: photo05,
+    imageSrcSetWebP: photo05WebP,
+    width: 2978,
+    height: 3723,
   },
 ];
 
@@ -65,12 +88,17 @@ export const GalleryPage = () => {
                 className={`group relative overflow-hidden bg-[#2A2620] ${isFeatured ? 'md:row-span-2' : ''}`}
                 aria-label={item.title}
               >
-                <img
-                  src={item.imageSrc}
-                  alt={item.title}
-                  className="h-full w-full object-cover"
-                  loading={isFeatured ? 'eager' : 'lazy'}
-                />
+                <picture>
+                  <source srcSet={item.imageSrcSetWebP} type="image/webp" sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw" />
+                  <img
+                    src={item.imageSrc}
+                    alt={item.title}
+                    width={item.width}
+                    height={item.height}
+                    className="h-full w-full object-cover"
+                    loading={isFeatured ? 'eager' : 'lazy'}
+                  />
+                </picture>
 
                 <div className="gallery-overlay-gradient absolute bottom-0 left-0 right-0 p-5 opacity-100 transition-opacity duration-200 group-hover:opacity-100 md:opacity-0">
                   <h2 className="font-display text-base text-[#F5F0E8]">{item.title}</h2>
