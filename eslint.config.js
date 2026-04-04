@@ -38,7 +38,7 @@ export default defineConfig([
         },
         {
           selector:
-            'ImportDeclaration[source.value=/^\\.(?!.*\\.(css|svg|png|jpe?g|webp|gif)$)/] > ImportDefaultSpecifier',
+            'ImportDeclaration[source.value=/^\\.(?!.*\\.(css|svg|png|jpe?g|webp|gif)(\\?.*)?$)/] > ImportDefaultSpecifier',
           message: 'Default imports from local code files are not allowed. Use named imports instead.',
         },
       ],

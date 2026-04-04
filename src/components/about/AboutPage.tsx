@@ -1,4 +1,5 @@
 import aboutPhoto from '../../assets/images/about_img.jpg';
+import aboutPhotoWebP from '../../assets/images/about_img.jpg?w=480;960;1440&format=webp&as=srcset';
 
 const ABOUT_PARAGRAPHS = [
   "I'm a software engineer who debugs bread.",
@@ -30,7 +31,10 @@ export const AboutPage = () => {
       </section>
 
       <section className="relative overflow-hidden bg-[#1C1A17]">
-        <img src={aboutPhoto} alt="Cat inspecting a sourdough loaf" className="h-full w-full object-cover object-[center_30%]" />
+        <picture>
+          <source srcSet={aboutPhotoWebP} type="image/webp" sizes="(max-width: 1023px) 100vw, 50vw" />
+          <img src={aboutPhoto} alt="Cat inspecting a sourdough loaf" width={3024} height={3780} className="h-full w-full object-cover object-[center_30%]" loading="lazy" />
+        </picture>
         <div className="gallery-overlay-gradient absolute bottom-0 left-0 right-0 px-8 py-6">
           <p className="font-mono text-[11px] tracking-wide text-[#E8C98ACC]">Official loaf inspector</p>
         </div>
