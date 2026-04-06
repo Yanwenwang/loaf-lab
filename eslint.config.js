@@ -25,6 +25,7 @@ export default defineConfig([
   },
   {
     files: ['src/**/*.{ts,tsx}'],
+    ignores: ['src/**/*.d.ts'],
     extends: [reactHooks.configs.flat.recommended, reactRefresh.configs.vite],
     languageOptions: {
       globals: globals.browser,
