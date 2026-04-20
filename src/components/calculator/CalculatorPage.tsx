@@ -51,7 +51,7 @@ export const CalculatorPage = () => {
             <h2 className="mb-7 font-display text-[26px] text-[#1C1A17]">Dough Calculator</h2>
 
             <div className="flex items-center justify-between py-3.5">
-              <span className="text-[13px] tracking-tight text-[#6B6560]">Total dough weight</span>
+              <span className="text-[13px] tracking-tight text-[#6B6560]">Total dough weight <span className="font-mono text-[10px] text-[#6B6560B3]">(300 – 2500g)</span></span>
               <span className="flex items-baseline">
                 <input
                   aria-label="Total dough weight"
@@ -82,7 +82,7 @@ export const CalculatorPage = () => {
             />
 
             <div className="mt-5 flex items-center justify-between py-3.5">
-              <span className="text-[13px] tracking-tight text-[#6B6560]">Target hydration</span>
+              <span className="text-[13px] tracking-tight text-[#6B6560]">Target hydration <span className="font-mono text-[10px] text-[#6B6560B3]">(50 – 100%)</span></span>
               <span className="flex items-baseline">
                 <input
                   aria-label="Target hydration"
@@ -113,7 +113,7 @@ export const CalculatorPage = () => {
             />
 
             <div className="mt-5 flex items-center justify-between py-3.5">
-              <span className="text-[13px] tracking-tight text-[#6B6560]">Fresh milled %</span>
+              <span className="text-[13px] tracking-tight text-[#6B6560]">Fresh milled % <span className="font-mono text-[10px] text-[#6B6560B3]">(0 – 100%)</span></span>
               <span className="flex items-baseline">
                 <input
                   aria-label="Fresh milled percent"
