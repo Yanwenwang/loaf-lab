@@ -80,6 +80,7 @@ export const CalculatorPage = () => {
               onChange={(event) => setTotalDoughWeight(Number(event.target.value))}
               className="calc-slider"
             />
+            <p className="font-mono text-[10px] text-[#6B6560B3]">300 – 2500 g</p>
 
             <div className="mt-5 flex items-center justify-between py-3.5">
               <span className="text-[13px] tracking-tight text-[#6B6560]">Target hydration</span>
@@ -111,6 +112,7 @@ export const CalculatorPage = () => {
               onChange={(event) => setTargetHydration(Number(event.target.value))}
               className="calc-slider"
             />
+            <p className="font-mono text-[10px] text-[#6B6560B3]">50 – 100 %</p>
 
             <div className="mt-5 flex items-center justify-between py-3.5">
               <span className="text-[13px] tracking-tight text-[#6B6560]">Fresh milled %</span>
@@ -142,6 +144,7 @@ export const CalculatorPage = () => {
               onChange={(event) => setFreshMilledPercent(Number(event.target.value))}
               className="calc-slider"
             />
+            <p className="font-mono text-[10px] text-[#6B6560B3]">0 – 100 %</p>
 
             <div data-testid="calculator-output" className="mt-6 overflow-hidden border-t border-[#C4813A33] pt-6">
               <div className="pb-5">
