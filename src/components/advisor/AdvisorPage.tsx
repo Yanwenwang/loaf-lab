@@ -115,7 +115,7 @@ export const AdvisorPage = () => {
                 </button>
               ))}
             </div>
-            <div className="w-full max-w-[440px]">{inputBox}</div>
+            <div className="w-full max-w-[600px]">{inputBox}</div>
           </div>
         ) : (
           <div className="chat-messages-scroll flex flex-1 flex-col gap-4 overflow-y-auto px-10 pb-5 pt-8">
@@ -155,7 +155,7 @@ export const AdvisorPage = () => {
 
         {hasConversation && (
           <div className="shrink-0 bg-[#EDE8DF] px-10 pb-8">
-            {inputBox}
+            <div className="mx-auto w-full max-w-[600px]">{inputBox}</div>
           </div>
         )}
       </section>
