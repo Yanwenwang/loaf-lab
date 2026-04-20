@@ -54,7 +54,7 @@ export const AdvisorPage = () => {
   }, [messages, isTyping]);
 
   const inputBox = (
-    <div className="flex flex-col border border-[#C4813A40] bg-[#FAF7F2] transition-colors duration-200 focus-within:border-[#C4813A]">
+    <div className="flex flex-col rounded-2xl border border-[#C4813A40] bg-[#FAF7F2] transition-colors duration-200 focus-within:border-[#C4813A]">
       <textarea
         ref={inputRef}
         rows={1}
