@@ -92,7 +92,7 @@ export const AdvisorPage = () => {
 
       <section className="flex h-full flex-col bg-[#EDE8DF]">
         {!hasConversation ? (
-          <div className="flex flex-1 flex-col items-center justify-center gap-6 p-10 -mt-16">
+          <div className="flex flex-1 flex-col items-center justify-center gap-6 p-10 pb-24">
             <span className="text-[56px] leading-none opacity-30">🌾</span>
             <h2 className="text-center text-[24px] text-[#1C1A17] opacity-45" style={{ fontFamily: 'Playfair Display, Georgia, serif' }}>
               What are you baking?
