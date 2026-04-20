@@ -34,3 +34,38 @@
   border-radius: 50%;
   border: none;
 }
+
+.calc-number-input {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(196, 129, 58, 0.3);
+  color: #1c1a17;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  outline: none;
+  text-align: right;
+}
+
+/* Width sized to max expected digits + breathing room so the underline
+   feels like it belongs to the number rather than an empty blank. */
+.calc-number-input--weight {
+  width: 4.5ch; /* up to 4 digits (2500) */
+}
+
+.calc-number-input--percent {
+  width: 3.5ch; /* up to 3 digits (100) */
+}
+
+.calc-number-input::-webkit-outer-spin-button,
+.calc-number-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.calc-number-input:focus-visible {
+  border-bottom-color: #c4813a;
+}
