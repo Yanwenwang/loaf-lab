@@ -113,7 +113,7 @@ export const CalculatorPage = () => {
             />
 
             <div className="mt-5 flex items-center justify-between py-3.5">
-              <span className="text-[13px] tracking-tight text-[#6B6560]">Fresh milled % <span className="font-mono text-[10px] text-[#6B6560B3]">(0 – 100%)</span></span>
+              <span className="text-[13px] tracking-tight text-[#6B6560]">Fresh milled <span className="font-mono text-[10px] text-[#6B6560B3]">(0 – 100%)</span></span>
               <span className="flex items-baseline">
                 <input
                   aria-label="Fresh milled percent"
