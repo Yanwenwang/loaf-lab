@@ -12,16 +12,39 @@ const STARTER_PROMPTS = [
   { label: 'Scoring & shaping', question: "What's the best scoring pattern for a batard?" },
 ] as const;
 
+const MAX_INPUT_HEIGHT = 200;
+
 export const AdvisorPage = () => {
   const [input, setInput] = useState('');
   const { messages, isTyping, error, sendQuestion } = useAdvisorChat();
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const inputRef = useRef<HTMLTextAreaElement | null>(null);
 
   const hasConversation = messages.length > 0;
+
+  const resizeTextarea = (el: HTMLTextAreaElement) => {
+    el.style.height = 'auto';
+    el.style.height = `${Math.min(el.scrollHeight, MAX_INPUT_HEIGHT)}px`;
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setInput(e.target.value);
+    resizeTextarea(e.target);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      void handleSend(input);
+    }
+  };
 
   const handleSend = async (question: string) => {
     await sendQuestion(question);
     setInput('');
+    if (inputRef.current) {
+      inputRef.current.style.height = 'auto';
+    }
   };
 
   useEffect(() => {
@@ -29,6 +52,32 @@ export const AdvisorPage = () => {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages, isTyping]);
+
+  const inputBox = (
+    <div className="flex flex-col rounded-2xl border border-[#C4813A40] bg-[#FAF7F2] transition-colors duration-200 focus-within:border-[#C4813A]">
+      <textarea
+        ref={inputRef}
+        rows={1}
+        className="w-full resize-none overflow-y-auto bg-transparent px-5 pt-4 pr-4 pb-2 text-sm leading-relaxed text-[#1C1A17] outline-none placeholder:text-[#6B6560]"
+        style={{ maxHeight: MAX_INPUT_HEIGHT }}
+        placeholder="Ask about your bake..."
+        aria-label="Advisor input"
+        value={input}
+        onChange={handleChange}
+        onKeyDown={handleKeyDown}
+      />
+      <div className="flex justify-end px-3 pb-3">
+        <button
+          type="button"
+          className="flex h-8 w-8 items-center justify-center rounded-full bg-[#8B5A2B] text-base text-[#F5F0E8] transition-colors duration-200 hover:bg-[#1C1A17] disabled:cursor-not-allowed disabled:opacity-60"
+          onClick={() => void handleSend(input)}
+          disabled={isTyping}
+        >
+          {isTyping ? '…' : '→'}
+        </button>
+      </div>
+    </div>
+  );
 
   return (
     <main className="grid h-[calc(100vh-73px)] grid-cols-1 lg:grid-cols-2">
@@ -43,7 +92,7 @@ export const AdvisorPage = () => {
 
       <section className="flex h-full flex-col bg-[#EDE8DF]">
         {!hasConversation ? (
-          <div className="flex flex-1 flex-col items-center justify-center gap-6 p-10">
+          <div className="flex flex-1 flex-col items-center justify-center gap-6 p-10 pb-24">
             <span className="text-[56px] leading-none opacity-30">🌾</span>
             <h2 className="text-center text-[24px] text-[#1C1A17] opacity-45" style={{ fontFamily: 'Playfair Display, Georgia, serif' }}>
               What are you baking?
@@ -66,6 +115,7 @@ export const AdvisorPage = () => {
                 </button>
               ))}
             </div>
+            <div className="w-full max-w-[600px]">{inputBox}</div>
           </div>
         ) : (
           <div className="chat-messages-scroll flex flex-1 flex-col gap-4 overflow-y-auto px-10 pb-5 pt-8">
@@ -103,30 +153,11 @@ export const AdvisorPage = () => {
           </div>
         )}
 
-        <div className="flex shrink-0 bg-[#EDE8DF] px-10 pb-8">
-          <input
-            className="flex-1 border border-r-0 border-[#C4813A40] bg-[#FAF7F2] px-5 py-4 text-sm text-[#1C1A17] outline-none transition-colors duration-200 focus:border-[#C4813A]"
-            placeholder="Ask about your bake..."
-            aria-label="Advisor input"
-            value={input}
-            onChange={(event) => setInput(event.target.value)}
-            onKeyDown={(event) => {
-              if (event.key === 'Enter') {
-                void handleSend(input);
-              }
-            }}
-          />
-          <button
-            type="button"
-            className="bg-[#8B5A2B] px-[22px] py-4 text-base text-[#F5F0E8] transition-colors duration-200 hover:bg-[#1C1A17] disabled:cursor-not-allowed disabled:opacity-60"
-            onClick={() => {
-              void handleSend(input);
-            }}
-            disabled={isTyping}
-          >
-            {isTyping ? '…' : '→'}
-          </button>
-        </div>
+        {hasConversation && (
+          <div className="shrink-0 bg-[#EDE8DF] px-10 pb-8">
+            <div className="mx-auto w-full max-w-[600px]">{inputBox}</div>
+          </div>
+        )}
       </section>
     </main>
   );
