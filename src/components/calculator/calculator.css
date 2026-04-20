@@ -34,3 +34,29 @@
   border-radius: 50%;
   border: none;
 }
+
+.calc-number-input {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(196, 129, 58, 0.3);
+  color: #1c1a17;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  outline: none;
+  text-align: right;
+  width: 4.5rem;
+}
+
+.calc-number-input::-webkit-outer-spin-button,
+.calc-number-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.calc-number-input:focus-visible {
+  border-bottom-color: #c4813a;
+}

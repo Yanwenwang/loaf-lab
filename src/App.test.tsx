@@ -27,7 +27,7 @@ describe('App', () => {
     window.history.pushState({}, '', '/calculator');
     const calculatorView = render(<App />);
     expect(await screen.findByRole('heading', { name: /dough calculator/i })).toBeInTheDocument();
-    expect(await screen.findByLabelText(/total dough weight/i)).toBeInTheDocument();
+    expect(await screen.findByLabelText(/^total dough weight$/i)).toBeInTheDocument();
     calculatorView.unmount();
 
     window.history.pushState({}, '', '/gallery');
