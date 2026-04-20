@@ -61,6 +61,7 @@ export const CalculatorPage = () => {
                   step={1}
                   value={totalDoughWeight}
                   onChange={(e) => {
+                    if (e.target.value.length > 4) return;
                     const v = Number(e.target.value);
                     if (!isNaN(v)) setTotalDoughWeight(v);
                   }}
@@ -91,6 +92,7 @@ export const CalculatorPage = () => {
                   step={1}
                   value={targetHydration}
                   onChange={(e) => {
+                    if (e.target.value.length > 3) return;
                     const v = Number(e.target.value);
                     if (!isNaN(v)) setTargetHydration(v);
                   }}
@@ -121,6 +123,7 @@ export const CalculatorPage = () => {
                   step={1}
                   value={freshMilledPercent}
                   onChange={(e) => {
+                    if (e.target.value.length > 3) return;
                     const v = Number(e.target.value);
                     if (!isNaN(v)) setFreshMilledPercent(v);
                   }}
@@ -140,28 +143,28 @@ export const CalculatorPage = () => {
               className="calc-slider"
             />
 
-            <div data-testid="calculator-output" className="mt-6 border-t border-[#C4813A33] pt-6">
+            <div data-testid="calculator-output" className="mt-6 overflow-hidden border-t border-[#C4813A33] pt-6">
               <div className="pb-5">
                 <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[#C4813A]">Flour</p>
-                <p className="flex items-baseline text-[#1C1A17]">
-                  <span className="font-sans text-[44px] font-light tracking-tight">{Math.round(output.flour)}</span>
-                  <span className="ml-1.5 font-mono text-sm font-light text-[#6B6560]">g</span>
+                <p className="flex min-w-0 items-baseline text-[#1C1A17]">
+                  <span className="truncate font-sans text-[44px] font-light tracking-tight">{Math.round(output.flour)}</span>
+                  <span className="ml-1.5 shrink-0 font-mono text-sm font-light text-[#6B6560]">g</span>
                 </p>
               </div>
 
               <div className="grid grid-cols-2 border-t border-[#C4813A33]">
                 <div className="border-r border-[#C4813A33] py-4 pr-5">
                   <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[#C4813A]">Water</p>
-                  <p className="flex items-baseline text-[#1C1A17]">
-                    <span className="font-sans text-[28px] font-light tracking-tight">{Math.round(output.water)}</span>
-                    <span className="ml-1 font-mono text-xs font-light text-[#6B6560]">g</span>
+                  <p className="flex min-w-0 items-baseline text-[#1C1A17]">
+                    <span className="truncate font-sans text-[28px] font-light tracking-tight">{Math.round(output.water)}</span>
+                    <span className="ml-1 shrink-0 font-mono text-xs font-light text-[#6B6560]">g</span>
                   </p>
                 </div>
                 <div className="py-4 pl-5">
                   <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[#C4813A]">Salt</p>
-                  <p className="flex items-baseline text-[#1C1A17]">
-                    <span className="font-sans text-[28px] font-light tracking-tight">{Math.round(output.salt)}</span>
-                    <span className="ml-1 font-mono text-xs font-light text-[#6B6560]">g</span>
+                  <p className="flex min-w-0 items-baseline text-[#1C1A17]">
+                    <span className="truncate font-sans text-[28px] font-light tracking-tight">{Math.round(output.salt)}</span>
+                    <span className="ml-1 shrink-0 font-mono text-xs font-light text-[#6B6560]">g</span>
                   </p>
                 </div>
               </div>
