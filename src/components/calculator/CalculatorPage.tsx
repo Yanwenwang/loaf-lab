@@ -50,98 +50,113 @@ export const CalculatorPage = () => {
           <aside className="border border-[#C4813A33] bg-[#FAF7F2] p-6 md:p-10">
             <h2 className="mb-7 font-display text-[26px] text-[#1C1A17]">Dough Calculator</h2>
 
-            <div className="flex items-center justify-between py-3.5">
-              <span className="text-[13px] tracking-tight text-[#6B6560]">Total dough weight <span className="font-mono text-[10px] text-[#6B6560B3]">(300 – 2500g)</span></span>
-              <span className="flex items-baseline">
-                <input
-                  aria-label="Total dough weight"
-                  type="number"
-                  min={300}
-                  max={2500}
-                  step={1}
-                  value={totalDoughWeight}
-                  onChange={(e) => {
-                    if (e.target.value.length > 4) return;
-                    const v = Number(e.target.value);
-                    if (!isNaN(v)) setTotalDoughWeight(v);
-                  }}
-                  onBlur={() => setTotalDoughWeight(Math.min(2500, Math.max(300, totalDoughWeight)))}
-                  className="calc-number-input calc-number-input--weight"
-                />
-                <span className="ml-1 font-sans text-[11px] font-light text-[#6B6560]">g</span>
-              </span>
+            <div className="group">
+              <div className="flex items-center justify-between py-3.5">
+                <span className="text-[13px] tracking-tight text-[#6B6560]">
+                  Total dough weight
+                  <span className="ml-1 font-mono text-[10px] text-[#6B6560B3] opacity-0 transition-opacity group-focus-within:opacity-100">(300 – 2500g)</span>
+                </span>
+                <span className="flex items-baseline">
+                  <input
+                    aria-label="Total dough weight"
+                    type="number"
+                    min={300}
+                    max={2500}
+                    step={1}
+                    value={totalDoughWeight}
+                    onChange={(e) => {
+                      if (e.target.value.length > 4) return;
+                      const v = Number(e.target.value);
+                      if (!isNaN(v)) setTotalDoughWeight(v);
+                    }}
+                    onBlur={() => setTotalDoughWeight(Math.min(2500, Math.max(300, totalDoughWeight)))}
+                    className="calc-number-input calc-number-input--weight"
+                  />
+                  <span className="ml-1 font-sans text-[11px] font-light text-[#6B6560]">g</span>
+                </span>
+              </div>
+              <input
+                aria-label="Total dough weight slider"
+                type="range"
+                min={300}
+                max={2500}
+                value={totalDoughWeight}
+                onChange={(event) => setTotalDoughWeight(Number(event.target.value))}
+                className="calc-slider"
+              />
             </div>
-            <input
-              aria-label="Total dough weight slider"
-              type="range"
-              min={300}
-              max={2500}
-              value={totalDoughWeight}
-              onChange={(event) => setTotalDoughWeight(Number(event.target.value))}
-              className="calc-slider"
-            />
 
-            <div className="mt-5 flex items-center justify-between py-3.5">
-              <span className="text-[13px] tracking-tight text-[#6B6560]">Target hydration <span className="font-mono text-[10px] text-[#6B6560B3]">(50 – 100%)</span></span>
-              <span className="flex items-baseline">
-                <input
-                  aria-label="Target hydration"
-                  type="number"
-                  min={50}
-                  max={100}
-                  step={1}
-                  value={targetHydration}
-                  onChange={(e) => {
-                    if (e.target.value.length > 3) return;
-                    const v = Number(e.target.value);
-                    if (!isNaN(v)) setTargetHydration(v);
-                  }}
-                  onBlur={() => setTargetHydration(Math.min(100, Math.max(50, targetHydration)))}
-                  className="calc-number-input calc-number-input--percent"
-                />
-                <span className="ml-1 font-sans text-[11px] font-light text-[#6B6560]">%</span>
-              </span>
+            <div className="group mt-5">
+              <div className="flex items-center justify-between py-3.5">
+                <span className="text-[13px] tracking-tight text-[#6B6560]">
+                  Target hydration
+                  <span className="ml-1 font-mono text-[10px] text-[#6B6560B3] opacity-0 transition-opacity group-focus-within:opacity-100">(50 – 100%)</span>
+                </span>
+                <span className="flex items-baseline">
+                  <input
+                    aria-label="Target hydration"
+                    type="number"
+                    min={50}
+                    max={100}
+                    step={1}
+                    value={targetHydration}
+                    onChange={(e) => {
+                      if (e.target.value.length > 3) return;
+                      const v = Number(e.target.value);
+                      if (!isNaN(v)) setTargetHydration(v);
+                    }}
+                    onBlur={() => setTargetHydration(Math.min(100, Math.max(50, targetHydration)))}
+                    className="calc-number-input calc-number-input--percent"
+                  />
+                  <span className="ml-1 font-sans text-[11px] font-light text-[#6B6560]">%</span>
+                </span>
+              </div>
+              <input
+                aria-label="Target hydration slider"
+                type="range"
+                min={50}
+                max={100}
+                value={targetHydration}
+                onChange={(event) => setTargetHydration(Number(event.target.value))}
+                className="calc-slider"
+              />
             </div>
-            <input
-              aria-label="Target hydration slider"
-              type="range"
-              min={50}
-              max={100}
-              value={targetHydration}
-              onChange={(event) => setTargetHydration(Number(event.target.value))}
-              className="calc-slider"
-            />
 
-            <div className="mt-5 flex items-center justify-between py-3.5">
-              <span className="text-[13px] tracking-tight text-[#6B6560]">Fresh milled <span className="font-mono text-[10px] text-[#6B6560B3]">(0 – 100%)</span></span>
-              <span className="flex items-baseline">
-                <input
-                  aria-label="Fresh milled percent"
-                  type="number"
-                  min={0}
-                  max={100}
-                  step={1}
-                  value={freshMilledPercent}
-                  onChange={(e) => {
-                    if (e.target.value.length > 3) return;
-                    const v = Number(e.target.value);
-                    if (!isNaN(v)) setFreshMilledPercent(v);
-                  }}
-                  onBlur={() => setFreshMilledPercent(Math.min(100, Math.max(0, freshMilledPercent)))}
-                  className="calc-number-input calc-number-input--percent"
-                />
-                <span className="ml-1 font-sans text-[11px] font-light text-[#6B6560]">%</span>
-              </span>
+            <div className="group mt-5">
+              <div className="flex items-center justify-between py-3.5">
+                <span className="text-[13px] tracking-tight text-[#6B6560]">
+                  Fresh milled
+                  <span className="ml-1 font-mono text-[10px] text-[#6B6560B3] opacity-0 transition-opacity group-focus-within:opacity-100">(0 – 100%)</span>
+                </span>
+                <span className="flex items-baseline">
+                  <input
+                    aria-label="Fresh milled percent"
+                    type="number"
+                    min={0}
+                    max={100}
+                    step={1}
+                    value={freshMilledPercent}
+                    onChange={(e) => {
+                      if (e.target.value.length > 3) return;
+                      const v = Number(e.target.value);
+                      if (!isNaN(v)) setFreshMilledPercent(v);
+                    }}
+                    onBlur={() => setFreshMilledPercent(Math.min(100, Math.max(0, freshMilledPercent)))}
+                    className="calc-number-input calc-number-input--percent"
+                  />
+                  <span className="ml-1 font-sans text-[11px] font-light text-[#6B6560]">%</span>
+                </span>
+              </div>
+              <input
+                aria-label="Fresh milled percent slider"
+                type="range"
+                min={0}
+                max={100}
+                value={freshMilledPercent}
+                onChange={(event) => setFreshMilledPercent(Number(event.target.value))}
+                className="calc-slider"
+              />
             </div>
-            <input
-              aria-label="Fresh milled percent slider"
-              type="range"
-              min={0}
-              max={100}
-              value={freshMilledPercent}
-              onChange={(event) => setFreshMilledPercent(Number(event.target.value))}
-              className="calc-slider"
-            />
 
             <div data-testid="calculator-output" className="mt-6 overflow-hidden border-t border-[#C4813A33] pt-6">
               <div className="pb-5">
