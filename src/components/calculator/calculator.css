@@ -48,7 +48,16 @@
   letter-spacing: -0.02em;
   outline: none;
   text-align: right;
-  width: 4.5rem;
+}
+
+/* Width sized to max expected digits + breathing room so the underline
+   feels like it belongs to the number rather than an empty blank. */
+.calc-number-input--weight {
+  width: 4.5ch; /* up to 4 digits (2500) */
+}
+
+.calc-number-input--percent {
+  width: 3.5ch; /* up to 3 digits (100) */
 }
 
 .calc-number-input::-webkit-outer-spin-button,

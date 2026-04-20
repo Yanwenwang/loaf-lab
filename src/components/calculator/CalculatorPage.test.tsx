@@ -49,20 +49,20 @@ describe('CalculatorPage', () => {
     const weightInput = screen.getByLabelText(/^total dough weight$/i);
     fireEvent.change(weightInput, { target: { value: '9999' } });
     fireEvent.blur(weightInput);
-    expect(weightInput).toHaveValue(2000);
+    expect(weightInput).toHaveValue(2500);
 
     fireEvent.change(weightInput, { target: { value: '10' } });
     fireEvent.blur(weightInput);
-    expect(weightInput).toHaveValue(400);
+    expect(weightInput).toHaveValue(300);
 
     const hydrationInput = screen.getByLabelText(/^target hydration$/i);
-    fireEvent.change(hydrationInput, { target: { value: '99' } });
+    fireEvent.change(hydrationInput, { target: { value: '110' } });
     fireEvent.blur(hydrationInput);
-    expect(hydrationInput).toHaveValue(95);
+    expect(hydrationInput).toHaveValue(100);
 
     fireEvent.change(hydrationInput, { target: { value: '10' } });
     fireEvent.blur(hydrationInput);
-    expect(hydrationInput).toHaveValue(60);
+    expect(hydrationInput).toHaveValue(50);
 
     const freshMilledInput = screen.getByLabelText(/^fresh milled percent$/i);
     fireEvent.change(freshMilledInput, { target: { value: '200' } });
@@ -77,10 +77,10 @@ describe('CalculatorPage', () => {
   it('uses design-spec slider ranges', () => {
     render(<CalculatorPage />);
 
-    expect(screen.getByLabelText(/total dough weight slider/i)).toHaveAttribute('min', '400');
-    expect(screen.getByLabelText(/total dough weight slider/i)).toHaveAttribute('max', '2000');
-    expect(screen.getByLabelText(/target hydration slider/i)).toHaveAttribute('min', '60');
-    expect(screen.getByLabelText(/target hydration slider/i)).toHaveAttribute('max', '95');
+    expect(screen.getByLabelText(/total dough weight slider/i)).toHaveAttribute('min', '300');
+    expect(screen.getByLabelText(/total dough weight slider/i)).toHaveAttribute('max', '2500');
+    expect(screen.getByLabelText(/target hydration slider/i)).toHaveAttribute('min', '50');
+    expect(screen.getByLabelText(/target hydration slider/i)).toHaveAttribute('max', '100');
     expect(screen.getByLabelText(/fresh milled percent slider/i)).toHaveAttribute('min', '0');
     expect(screen.getByLabelText(/fresh milled percent slider/i)).toHaveAttribute('max', '100');
   });

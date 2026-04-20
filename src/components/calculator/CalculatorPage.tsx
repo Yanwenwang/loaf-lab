@@ -56,16 +56,16 @@ export const CalculatorPage = () => {
                 <input
                   aria-label="Total dough weight"
                   type="number"
-                  min={400}
-                  max={2000}
+                  min={300}
+                  max={2500}
                   step={1}
                   value={totalDoughWeight}
                   onChange={(e) => {
                     const v = Number(e.target.value);
                     if (!isNaN(v)) setTotalDoughWeight(v);
                   }}
-                  onBlur={() => setTotalDoughWeight(Math.min(2000, Math.max(400, totalDoughWeight)))}
-                  className="calc-number-input"
+                  onBlur={() => setTotalDoughWeight(Math.min(2500, Math.max(300, totalDoughWeight)))}
+                  className="calc-number-input calc-number-input--weight"
                 />
                 <span className="ml-1 font-sans text-[11px] font-light text-[#6B6560]">g</span>
               </span>
@@ -73,8 +73,8 @@ export const CalculatorPage = () => {
             <input
               aria-label="Total dough weight slider"
               type="range"
-              min={400}
-              max={2000}
+              min={300}
+              max={2500}
               value={totalDoughWeight}
               onChange={(event) => setTotalDoughWeight(Number(event.target.value))}
               className="calc-slider"
@@ -86,16 +86,16 @@ export const CalculatorPage = () => {
                 <input
                   aria-label="Target hydration"
                   type="number"
-                  min={60}
-                  max={95}
+                  min={50}
+                  max={100}
                   step={1}
                   value={targetHydration}
                   onChange={(e) => {
                     const v = Number(e.target.value);
                     if (!isNaN(v)) setTargetHydration(v);
                   }}
-                  onBlur={() => setTargetHydration(Math.min(95, Math.max(60, targetHydration)))}
-                  className="calc-number-input"
+                  onBlur={() => setTargetHydration(Math.min(100, Math.max(50, targetHydration)))}
+                  className="calc-number-input calc-number-input--percent"
                 />
                 <span className="ml-1 font-sans text-[11px] font-light text-[#6B6560]">%</span>
               </span>
@@ -103,8 +103,8 @@ export const CalculatorPage = () => {
             <input
               aria-label="Target hydration slider"
               type="range"
-              min={60}
-              max={95}
+              min={50}
+              max={100}
               value={targetHydration}
               onChange={(event) => setTargetHydration(Number(event.target.value))}
               className="calc-slider"
@@ -125,7 +125,7 @@ export const CalculatorPage = () => {
                     if (!isNaN(v)) setFreshMilledPercent(v);
                   }}
                   onBlur={() => setFreshMilledPercent(Math.min(100, Math.max(0, freshMilledPercent)))}
-                  className="calc-number-input"
+                  className="calc-number-input calc-number-input--percent"
                 />
                 <span className="ml-1 font-sans text-[11px] font-light text-[#6B6560]">%</span>
               </span>
