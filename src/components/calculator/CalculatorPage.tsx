@@ -92,7 +92,7 @@ export const CalculatorPage = () => {
                         const clamped = Math.min(2500, Math.max(300, totalDoughWeight));
                         if (clamped !== totalDoughWeight) {
                           setTotalDoughWeight(clamped);
-                          showClampedHint(setWeightHint, weightHintTimer, `Clamped to ${clamped}g`);
+                          showClampedHint(setWeightHint, weightHintTimer, `Adjusted to ${clamped}g`);
                         } else {
                           setWeightHint(null);
                         }
@@ -144,7 +144,7 @@ export const CalculatorPage = () => {
                         const clamped = Math.min(100, Math.max(50, targetHydration));
                         if (clamped !== targetHydration) {
                           setTargetHydration(clamped);
-                          showClampedHint(setHydrationHint, hydrationHintTimer, `Clamped to ${clamped}%`);
+                          showClampedHint(setHydrationHint, hydrationHintTimer, `Adjusted to ${clamped}%`);
                         } else {
                           setHydrationHint(null);
                         }
@@ -196,7 +196,7 @@ export const CalculatorPage = () => {
                         const clamped = Math.min(100, Math.max(0, freshMilledPercent));
                         if (clamped !== freshMilledPercent) {
                           setFreshMilledPercent(clamped);
-                          showClampedHint(setFreshMilledHint, freshMilledHintTimer, `Clamped to ${clamped}%`);
+                          showClampedHint(setFreshMilledHint, freshMilledHintTimer, `Adjusted to ${clamped}%`);
                         } else {
                           setFreshMilledHint(null);
                         }
